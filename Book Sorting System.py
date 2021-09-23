@@ -1,29 +1,26 @@
-book_title = []
-sorted_book_title = []
-
-def isntitle():
-    book_status = True
-    isn = int(input("What is the books International Standard Number "))
-    isn_title = ((isn // 10) % 1000)
-    print()
-    # Scan isn number with database and bring out corresponding title with variable name "title"
-    # if book is found book_Status = True
-    if book_status == True:
-        title = "A title"
-        print(f"Book found! title is {title}")
-        book_title.append(title)
-        sorted_book_title.extend(sorted(book_title))
-        print(f"the list of books are {sorted_book_title}")
-
-    # if book not found, book_status = False
-    else:
-        print("Book not found. Check ISN number")
+# list to hold all books and books sorted
+book_list = []
+sorted_book_list = []
 
 
-access = 1
-while(access == 1):
-    rideon = input("Click Enter to add a book ")
-    isntitle()
-    access = int(input("Enter the number 1 to add another book or any other number to cancel: "))
-    if access != 1:
+# Function to sort newly added book
+def add_book():
+    book_list.append([book_name, book_author, book_isbn])
+    # Moving all book entries into new list sorted
+    sorted_book_list = (sorted(book_list))
+    print("This list of books in alphabetical order are\n", sorted_book_list)
+    return sorted_book_list
+
+
+# Main to request input of book name, author and ISBN number
+a = "a"
+# Loop to keep adding books till user is done
+while a.upper() == "A":
+    book_name = input("Enter book name: ")
+    book_author = input("Enter book Author: ")
+    book_isbn = int(input("Enter book International Standard Number: "))
+    add_book()
+    a = input("Enter A to add another book or any other letter to end ")
+    # condition to leave loop
+    if a.upper() != "A":
         break
